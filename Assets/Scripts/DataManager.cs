@@ -10,7 +10,6 @@ public class DataManager : MonoBehaviour
     public int highScore;
     
 
-
     private void Awake()
     {
         if (instance != null)
