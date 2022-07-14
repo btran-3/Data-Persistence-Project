@@ -11,8 +11,16 @@ using UnityEditor;
 public class MenuManager : MonoBehaviour
 {
 
+    private string currentPlayerName;
+
+    public void SetPlayerName(string name)
+    {
+        currentPlayerName = name;
+    }
+
     public void LoadGame()
     {
+        DataManager.instance.playerName = currentPlayerName;
         SceneManager.LoadScene(1);
     }
 

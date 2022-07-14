@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
 
     public string playerName;
+    public string bestPlayerName;
     public int highScore;
     
 
