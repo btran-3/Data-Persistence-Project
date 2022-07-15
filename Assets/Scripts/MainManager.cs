@@ -22,8 +22,12 @@ public class MainManager : MonoBehaviour
     {
         return m_GameOver;
     }
-    
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        DataManager.instance.LoadGameData();
+    }
+
     void Start()
     {
         const float step = 0.6f;
@@ -92,6 +96,8 @@ public class MainManager : MonoBehaviour
             DataManager.instance.highScore = endingScore;
             DataManager.instance.bestPlayerName = DataManager.instance.playerName;
             BestScoreText.text = $"Best Score: {DataManager.instance.highScore}" + $" by {DataManager.instance.bestPlayerName}";
+
+            DataManager.instance.SaveGameData();
         }
 
     }

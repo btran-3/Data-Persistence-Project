@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,8 +11,13 @@ using UnityEditor;
 
 public class MenuManager : MonoBehaviour
 {
-
+    [SerializeField] private TextMeshProUGUI warningText;
     private string currentPlayerName;
+
+    private void Awake()
+    {
+        warningText.enabled = false;
+    }
 
     public void SetPlayerName(string name)
     {
@@ -20,8 +26,20 @@ public class MenuManager : MonoBehaviour
 
     public void LoadGame()
     {
-        DataManager.instance.playerName = currentPlayerName;
-        SceneManager.LoadScene(1);
+        if (currentPlayerName != null)
+        {
+            DataManager.instance.playerName = currentPlayerName;
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            warningText.enabled = true;
+        }
+    }
+
+    public void ResetGameData()
+    {
+        DataManager.instance.ResetGameData();
     }
 
     public void QuitGame()
