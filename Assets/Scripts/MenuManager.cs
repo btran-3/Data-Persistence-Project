@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        warningText.enabled = false;
+        warningText.gameObject.SetActive(false);
     }
 
     public void SetPlayerName(string name)
@@ -33,7 +33,8 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            warningText.enabled = true;
+            //Debug.LogWarning("No name entered");
+            warningText.gameObject.SetActive(true);
         }
     }
 
